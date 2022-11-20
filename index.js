@@ -1,10 +1,24 @@
+document.getElementById("theme-music").loop = true;
+document.getElementById("theme-music").volume = 0.5;
+
+var musicBtn = document.getElementById("music-player");
+musicBtn.addEventListener("click", () => {
+  themeMusic.play();
+  themeMusic.innerText = "pause";
+});
+
+musicBtn.addEventListener("dblclick", () => {
+  themeMusic.pause();
+  themeMusic.style.innerText = "pause";
+});
+
 const startBtn = document.getElementById("red-button");
 const shapeContainer = document.getElementById("shape-container");
 startBtn.addEventListener("click", () => {
   shape.style.display = "none";
   countdown();
   setTimeout(initialShape, 4500);
-  setTimeout(startGame, 4500);
+  setTimeout(startGame, 4700);
 });
 
 function initialShape() {
@@ -111,10 +125,17 @@ function startGame() {
 }
 
 const raceSound = document.getElementById("raceSound");
+
 var sound = document.getElementById("whoosh");
+
 var soundOne = document.getElementById("oneSound");
+
 var soundTwo = document.getElementById("twoSound");
+
 var soundThree = document.getElementById("threeSound");
+
+var themeMusic = document.getElementById("theme-music");
+
 function playAudio(sound) {
   sound.play();
 }
