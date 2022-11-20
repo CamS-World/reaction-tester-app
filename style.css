@@ -11,6 +11,44 @@ p {
   color: white;
 }
 
+#three {
+  font-size: 40vh;
+  text-align: center;
+  display: none;
+}
+
+#two {
+  font-size: 40vh;
+  text-align: center;
+  display: none;
+}
+
+#one {
+  font-size: 40vh;
+  text-align: center;
+  display: none;
+}
+
+#start-sign {
+  font-size: 40vh;
+  text-align: center;
+  display: none;
+}
+
+#red-button {
+  /* background: transparent; */
+  width: 4vw;
+  height: 6vh;
+  top: 12px;
+  position: relative;
+}
+
+#start-btn-text {
+  font-size: 3vh;
+  position: relative;
+  color: white;
+}
+
 #page-container {
   /* border: 2px solid black; */
   height: 100vh;
@@ -62,7 +100,4 @@ p {
   font-size: 25px;
   margin-right: 15px;
   color: white;
-}
-
-#start-button {
 }
