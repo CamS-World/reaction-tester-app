@@ -43,6 +43,13 @@ p {
   position: relative;
 }
 
+#music-player {
+  float: right;
+  position: relative;
+  top: 12px;
+  margin-right: 2%;
+}
+
 #start-btn-text {
   font-size: 3vh;
   position: relative;
@@ -97,6 +104,19 @@ p {
 
 #time {
   float: right;
+  font-size: 25px;
+  margin-right: 15px;
+  color: white;
+}
+
+#average-tag {
+  float: left;
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+#avg-secs {
+  float: left;
   font-size: 25px;
   margin-right: 15px;
   color: white;
