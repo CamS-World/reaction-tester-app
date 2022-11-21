@@ -90,16 +90,32 @@ function hideStart() {
 }
 
 function startGame() {
+  let attempts = 0;
+
   let start = new Date().getTime();
 
   const shape = document.getElementById("shape");
+
   shape.addEventListener("click", () => {
     shape.style.display = "none";
     let end = new Date().getTime();
     let timeTaken = (end - start) / 1000;
-    playAudio(sound);
+    recordedTimes.push(timeTaken);
+    console.log("time added: " + timeTaken);
     document.getElementById("time").innerText = timeTaken + "s";
-    appearAfterDelay();
+    playAudio(sound);
+    attempts++;
+
+    if (attempts < 3) {
+      appearAfterDelay();
+    } else {
+      document.getElementById("avg-secs").innerHTML = findAvgTime(
+        recordedTimes
+      );
+      alert(
+        "The game is over. Your average time was: " + findAvgTime(recordedTimes)
+      );
+    }
   });
 
   function makeShapeAppear() {
@@ -172,10 +188,6 @@ let randomColor = () => {
   }
   return hex;
 };
-randomColor();
-console.log(randomColor());
-
-shape.style.backgroundColor = randomColor();
 
 // Randomize Size
 let randomSize = () => {
@@ -184,7 +196,6 @@ let randomSize = () => {
   shapeSize = shapeWidth + shapeSize;
   return shapeSize;
 };
-console.log(randomSize());
 
 shape.style.height = randomSize();
 shape.style.width = shape.style.height;
@@ -202,4 +213,21 @@ let randomizeShape = () => {
   borderRadius = borderRadius + appendPercent;
   return borderRadius;
 };
-shape.style.borderRadius = randomizeShape();
+
+let recordedTimes = [];
+
+function findAvgTime(arr) {
+  var sum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];
+  }
+  var avg = sum / arr.length;
+  console.log(arr);
+  console.log(sum);
+  console.log(avg);
+  return threeDecimal(avg) + "s";
+}
+
+function threeDecimal(num) {
+  return Number.parseFloat(num).toFixed(3);
+}
