@@ -172,10 +172,6 @@ let randomColor = () => {
   }
   return hex;
 };
-randomColor();
-console.log(randomColor());
-
-shape.style.backgroundColor = randomColor();
 
 // Randomize Size
 let randomSize = () => {
@@ -184,7 +180,6 @@ let randomSize = () => {
   shapeSize = shapeWidth + shapeSize;
   return shapeSize;
 };
-console.log(randomSize());
 
 shape.style.height = randomSize();
 shape.style.width = shape.style.height;
@@ -202,4 +197,3 @@ let randomizeShape = () => {
   borderRadius = borderRadius + appendPercent;
   return borderRadius;
 };
-shape.style.borderRadius = randomizeShape();
