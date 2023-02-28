@@ -1,25 +1,112 @@
+// music player block
+
+var themeMusic = document.getElementById("theme-music");
 document.getElementById("theme-music").loop = true;
 document.getElementById("theme-music").volume = 0.5;
 
 var musicBtn = document.getElementById("music-player");
-musicBtn.addEventListener("click", () => {
-  themeMusic.play();
-  themeMusic.innerText = "pause";
-});
 
-musicBtn.addEventListener("dblclick", () => {
-  themeMusic.pause();
-  themeMusic.style.innerText = "pause";
-});
+playMusic()
 
-const startBtn = document.getElementById("red-button");
-const shapeContainer = document.getElementById("shape-container");
+// play music function
+function playMusic(){
+  musicBtn.addEventListener("click", () => {
+    themeMusic.play();
+    musicBtn.innerText = "pause";
+    pauseMusic()
+  });
+}
+
+// pause music function
+function pauseMusic(){
+  
+    musicBtn.addEventListener("click", () => {
+    themeMusic.pause();
+    musicBtn.innerText = "play";
+    playMusic()
+  });
+ }
+ 
+ // music player block ends
+ 
+ // Start sequence
+const startBtn = document.getElementById("startBtn");
+
+const shape = document.getElementById("shape");
+
 startBtn.addEventListener("click", () => {
-  shape.style.display = "none";
+  startBtn.disabled = true;
   countdown();
   setTimeout(initialShape, 4500);
   setTimeout(startGame, 4700);
 });
+
+
+
+// Countdown functionality
+function countdown() {
+  setTimeout(showThree, 1000);
+  
+  setTimeout(showTwo, 2000);
+  
+  setTimeout(showOne, 3000);
+ 
+  setTimeout(showStart, 4000);
+ 
+}
+
+// TODO: merge those show and hides
+
+const startDiv = document.getElementById("start-sign");
+const three = document.getElementById("three");
+const two = document.getElementById("two");
+const one = document.getElementById("one");
+
+function showThree() {
+  three.style.display = "block";
+  playAudio(soundThree);
+  setTimeout(hideThree, 300);
+}
+
+function showTwo() {
+      two.style.display = "block";
+      playAudio(soundTwo);
+      setTimeout(hideTwo, 300);
+}
+
+
+function showOne() {
+      one.style.display = "block";
+      playAudio(soundOne);
+      setTimeout(hideOne, 300);
+}
+
+function hideThree() {
+  three.style.display = "none";
+}
+
+
+function hideTwo() {
+  two.style.display = "none";
+}
+
+
+function hideOne() {
+  one.style.display = "none";
+}
+
+function showStart() {
+  startDiv.style.display = "block";
+  playAudio(raceSound);
+  setTimeout(hideStart, 300)
+}
+
+function hideStart() {
+  startDiv.style.display = "none";
+}
+// end of countdown sequence
+
+// shows initial shape
 
 function initialShape() {
   let top = Math.random() * 36.6;
@@ -37,88 +124,47 @@ function initialShape() {
   shape.style.display = "block";
 }
 
-function countdown() {
-  setTimeout(showThree, 1000);
-  setTimeout(hideThree, 1300);
-  setTimeout(showTwo, 2000);
-  setTimeout(hideTwo, 2300);
-  setTimeout(showOne, 3000);
-  setTimeout(hideOne, 3300);
-  setTimeout(showStart, 4000);
-  setTimeout(hideStart, 4300);
+function getTime() {
+  return new Date().getTime();
 }
 
-const startDiv = document.getElementById("start-sign");
-const three = document.getElementById("three");
-const two = document.getElementById("two");
-const one = document.getElementById("one");
-
-function showThree() {
-  three.style.display = "block";
-  playAudio(soundThree);
-}
-
-function hideThree() {
-  three.style.display = "none";
-}
-
-function showTwo() {
-  two.style.display = "block";
-  playAudio(soundTwo);
-}
-
-function hideTwo() {
-  two.style.display = "none";
-}
-
-function showOne() {
-  one.style.display = "block";
-  playAudio(soundOne);
-}
-
-function hideOne() {
-  one.style.display = "none";
-}
-
-function showStart() {
-  startDiv.style.display = "block";
-  playAudio(raceSound);
-}
-
-function hideStart() {
-  startDiv.style.display = "none";
-}
+const average = document.getElementById("avg-secs")
 
 function startGame() {
+  
   let attempts = 0;
 
-  let start = new Date().getTime();
+  let start = 0;
+  start = getTime()
 
-  const shape = document.getElementById("shape");
 
+  // shape onClick
   shape.addEventListener("click", () => {
     shape.style.display = "none";
-    let end = new Date().getTime();
-    let timeTaken = (end - start) / 1000;
-    recordedTimes.push(timeTaken);
-    console.log("time added: " + timeTaken);
-    document.getElementById("time").innerText = timeTaken + "s";
+
     playAudio(sound);
-    attempts++;
 
     if (attempts < 3) {
+      let end = getTime()
+      console.log("end: " + end);
+      console.log("attempts pre increment: " + attempts)
+      attempts++;
+      console.log("attempts post increment: " + attempts)
+      let timeTaken = (end - start) / 1000;
+      // console.log("start: " + start);
+      recordedTimes.push(timeTaken);
+      console.log("time added: " + timeTaken);
+      document.getElementById("time").innerText = timeTaken + "s";
       appearAfterDelay();
-    } else {
-      document.getElementById("avg-secs").innerHTML = findAvgTime(
-        recordedTimes
-      );
-      alert(
-        "The game is over. Your average time was: " + findAvgTime(recordedTimes)
-      );
-    }
+    } 
   });
+  //end of shape onClick
 
+  
+  
   function makeShapeAppear() {
+    
+    if (attempts < 3) {
     let top = Math.random() * 36.6;
     let left = Math.random() * 75.3;
     shape.style.top = top + "%";
@@ -132,7 +178,17 @@ function startGame() {
     shape.style.maxWidth = shape.style.maxWidth;
     shape.style.borderRadius = randomizeShape();
     shape.style.display = "block";
-    start = new Date().getTime();
+    
+    start = getTime();
+    console.log("make shape appear start: " + start);
+    }
+    else {
+      average.innerHTML = findAvgTime(
+        recordedTimes
+      );
+      resetGame()
+      console.log("We have reached 3 attempts. It's over.")
+    }
   }
 
   function appearAfterDelay() {
@@ -140,6 +196,18 @@ function startGame() {
   }
 }
 
+function resetGame(){
+      attempts = 0;
+      recordedTimes.length = 0;
+      start = 0;
+      startBtn.disabled = false;
+      setTimeout(resetAvgClock,2000);
+      console.log("cleared");
+}
+
+function resetAvgClock() {average.innerHTML = Number.parseFloat(0).toFixed(2) + "s";}
+
+// The sounds
 const raceSound = document.getElementById("raceSound");
 
 var sound = document.getElementById("whoosh");
@@ -150,7 +218,6 @@ var soundTwo = document.getElementById("twoSound");
 
 var soundThree = document.getElementById("threeSound");
 
-var themeMusic = document.getElementById("theme-music");
 
 function playAudio(sound) {
   sound.play();
@@ -223,8 +290,8 @@ function findAvgTime(arr) {
   }
   var avg = sum / arr.length;
   console.log(arr);
-  console.log(sum);
-  console.log(avg);
+  console.log("the sum " + sum);
+  console.log(sum + "/" + arr.length + "=" + avg);
   return threeDecimal(avg) + "s";
 }
 

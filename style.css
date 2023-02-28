@@ -35,7 +35,7 @@ p {
   display: none;
 }
 
-#red-button {
+#startBtn {
   /* background: transparent; */
   width: 4vw;
   height: 6vh;
@@ -47,6 +47,8 @@ p {
   float: right;
   position: relative;
   top: 12px;
+  width: 75px;
+  height: 33px;
   margin-right: 2%;
 }
 
