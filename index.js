@@ -1,8 +1,20 @@
-import hiAlert from './modules/test.js';
+import gamePage from './modules/test';
 
 // music player block
 
-hiAlert();
+
+getGame();
+
+
+function getGame(){
+  
+  const getGameBtn = document.querySelector('#goToGame');
+  getGameBtn.addEventListener('click', () => {
+    const app = document.querySelector('#page-container');
+    app.innerHTML = gamePage();
+  });
+  
+}
 
 var themeMusic = document.getElementById("theme-music");
 document.getElementById("theme-music").loop = true;
