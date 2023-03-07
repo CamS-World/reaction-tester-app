@@ -1,24 +1,29 @@
 {
   "name": "reaction-tester",
   "version": "1.0.0",
-  "description": "",
+  "description": "Reaction Tester Game-Web App",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node database.js"
+    "start": "parcel index.html" 
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CamS-World/reaction-tester-app.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Cameron Stephens",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CamS-World/reaction-tester-app/issues"
   },
   "homepage": "https://github.com/CamS-World/reaction-tester-app#readme",
   "dependencies": {
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "parcel-bundler": "^1.12.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0"
   }
 }

@@ -1,0 +1,128 @@
+body {
+  background-color: #1f2025;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  color: white;
+}
+
+#three {
+  font-size: 40vh;
+  text-align: center;
+  display: none;
+}
+
+#two {
+  font-size: 40vh;
+  text-align: center;
+  display: none;
+}
+
+#one {
+  font-size: 40vh;
+  text-align: center;
+  display: none;
+}
+
+#start-sign {
+  font-size: 40vh;
+  text-align: center;
+  display: none;
+}
+
+#startBtn {
+  /* background: transparent; */
+  width: 4vw;
+  height: 6vh;
+  top: 12px;
+  position: relative;
+}
+
+#music-player {
+  float: right;
+  position: relative;
+  top: 12px;
+  width: 75px;
+  height: 33px;
+  margin-right: 2%;
+}
+
+#start-btn-text {
+  font-size: 3vh;
+  position: relative;
+  color: white;
+}
+
+#page-container {
+  /* border: 2px solid black; */
+  height: 100vh;
+  width: 100vw;
+}
+
+#shape {
+  border-radius: 0%;
+  position: absolute;
+  border: 2px solid black;
+  max-width: 85% !important;
+  display: none;
+}
+
+#shape-container {
+  width: 99%;
+  position: relative;
+  height: 60%;
+  /* background-image: url(https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/133588348/original/513626e48022a4814b3dd071d6dc78f79e664d73/create-a-unique-2d-landscape.png); */
+  background-color: #cdc5c2;
+  border: 2px solid red;
+}
+
+#title {
+  text-align: center;
+  font-size: 5em;
+  font-family: airstrikeBullet;
+  color: firebrick;
+  background-color: whitesmoke;
+}
+
+.material-symbols-outlined {
+  background-image: url(/timer_FILL0_wght500_GRAD0_opsz48.d7cebce6.png);
+}
+
+@font-face {
+  src: url(/airstrikebullet.06c1bed1.ttf);
+  font-family: airstrikeBullet;
+}
+
+#time-tag {
+  float: right;
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+#time {
+  float: right;
+  font-size: 25px;
+  margin-right: 15px;
+  color: white;
+}
+
+#average-tag {
+  float: left;
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+#avg-secs {
+  float: left;
+  font-size: 25px;
+  margin-right: 15px;
+  color: white;
+}
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */

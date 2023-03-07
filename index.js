@@ -1,4 +1,8 @@
+import hiAlert from './modules/test.js';
+
 // music player block
+
+hiAlert();
 
 var themeMusic = document.getElementById("theme-music");
 document.getElementById("theme-music").loop = true;
@@ -186,7 +190,7 @@ function startGame() {
       average.innerHTML = findAvgTime(
         recordedTimes
       );
-      resetGame()
+      resetGame();
       console.log("We have reached 3 attempts. It's over.")
     }
   }
@@ -194,16 +198,18 @@ function startGame() {
   function appearAfterDelay() {
     setTimeout(makeShapeAppear, Math.random() + 1000);
   }
+
+  function resetGame(){
+    attempts = 0;
+    recordedTimes.length = 0;
+    start = 0;
+    startBtn.disabled = false;
+    setTimeout(resetAvgClock,2000);
+    console.log("cleared");
+}
 }
 
-function resetGame(){
-      attempts = 0;
-      recordedTimes.length = 0;
-      start = 0;
-      startBtn.disabled = false;
-      setTimeout(resetAvgClock,2000);
-      console.log("cleared");
-}
+
 
 function resetAvgClock() {average.innerHTML = Number.parseFloat(0).toFixed(2) + "s";}
 
