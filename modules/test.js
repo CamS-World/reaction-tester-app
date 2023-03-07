@@ -7,7 +7,7 @@ export default function gamePage(){
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Reaction Tester</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -18,7 +18,7 @@ export default function gamePage(){
   <body>
     <div id="page-container">
       <h1 id="title">
-        Reaction Blaster <span class="material-symbols-outlined"> Timer </span> 
+        Reaction Tester <span class="material-symbols-outlined"> Timer </span> 
       </h1>
 
     
